@@ -20,6 +20,69 @@ Codex 加载插件中的技能，通过终端将 Python 代码传给 `browser-us
 
 已有安装可直接复用；需要安装 Browser Use 时，请遵循[上游仓库文档](https://github.com/browser-use/browser-use)。
 
+## 未检测到本地环境时
+
+先检查命令是否可用，再决定是否安装。以下安装步骤只适用于缺失的组件，已有可用环境直接跳过。
+
+### 1. 检查 CLI
+
+Windows PowerShell：
+
+```powershell
+Get-Command browser-use -ErrorAction SilentlyContinue
+Get-Command uv -ErrorAction SilentlyContinue
+```
+
+macOS / Linux：
+
+```bash
+command -v browser-use
+command -v uv
+```
+
+如果能够找到 `browser-use`，先运行 `browser-use --doctor`。找不到命令也可能只是 PATH 尚未刷新：重新打开终端，或在已使用 uv 安装的情况下运行 `uv tool list` 确认，不要直接重复安装。
+
+### 2. 缺少 uv 时，从官方渠道安装
+
+按 [Astral 官方 uv 安装文档](https://docs.astral.sh/uv/getting-started/installation/)选择适合系统的方式。Windows 可以使用官方文档列出的 WinGet 命令：
+
+```powershell
+winget install --id=astral-sh.uv -e
+```
+
+macOS / Linux 可以使用官方安装脚本：
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+安装后重新打开终端，执行 `uv --version` 确认命令可用。
+
+### 3. 缺少 Browser Use CLI 时安装
+
+[Browser Use 官方 CLI 指南](https://github.com/browser-use/browser-use#path-2-cli)采用 uv 和 Python 3.12。仅在尚未安装 CLI 时执行：
+
+```text
+uv tool install --python 3.12 browser-use
+```
+
+uv 会按需准备 Python 3.12 和工具依赖，不需要先在系统中手动配置 Python 环境。若安装后终端仍找不到命令，执行 `uv tool update-shell`，然后重新打开终端。
+
+本插件已包含 Codex 技能，无需再执行 `browser-use skill install` 注册同名独立技能。这里安装的是 CLI 运行环境，插件本身仍按下方步骤安装。
+
+### 4. 安装 Chrome 并允许本地连接
+
+没有 Chrome 时，从 [Google Chrome 官方网站](https://www.google.com/chrome/)下载安装。启动 Chrome 后，按 [Browser Harness 官方连接说明](https://github.com/browser-use/browser-harness/blob/main/install.md#if-chrome-blocks-it)操作：
+
+1. 打开 `chrome://inspect/#remote-debugging`。
+2. 勾选允许当前浏览器实例远程调试。
+3. 执行 `browser-use --doctor`，再运行下方的连接验证示例。
+4. 如果 Chrome 显示连接授权弹窗，允许本次连接，并等待原命令完成。
+
+本地 Chrome 控制不需要 Browser Use Cloud API Key。只有选择可选云端浏览器服务时，才需要按上游文档配置云端认证。
+
+如果当前 Chrome 没有上述远程调试选项，或诊断仍失败，请查看官方连接文档，不要通过清除浏览器资料或反复重装工具处理。
+
 ## 安装插件
 
 ```text

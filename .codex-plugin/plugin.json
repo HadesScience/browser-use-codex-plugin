@@ -1,10 +1,10 @@
 {
-  "name": "browser-use",
-  "version": "1.0.0",
+  "name": "browser-use-opensource",
+  "version": "1.0.1",
   "description": "Control local Chrome using the existing browser-use CLI and skill.",
   "skills": "./skills/",
   "interface": {
-    "displayName": "Browser Use",
+    "displayName": "Browser Use OpenSource",
     "shortDescription": "通过现有 CLI 控制本机 Chrome",
     "longDescription": "复用现有 browser-use 安装，以 PowerShell stdin 调用 CLI，保留 Chrome 登录态。",
     "category": "Productivity"

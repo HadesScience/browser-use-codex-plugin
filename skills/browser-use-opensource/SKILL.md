@@ -1,5 +1,5 @@
 ---
-name: browser-use
+name: browser-use-opensource
 description: "Direct browser control via CDP for web interaction: automation, scraping, testing, screenshots, and site/app work."
 metadata:
   {

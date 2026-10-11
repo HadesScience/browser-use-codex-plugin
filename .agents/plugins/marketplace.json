@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "browser-use",
+      "name": "browser-use-opensource",
       "source": {
         "source": "local",
         "path": "./"

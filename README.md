@@ -1,4 +1,4 @@
-# Browser Use for Codex
+# Browser Use OpenSource for Codex
 
 将现有 Browser Use CLI 技能打包为 Codex 插件，通过 CDP 操作本机 Chrome，复用浏览器已有的登录状态。
 
@@ -7,6 +7,8 @@
 ## 工作方式
 
 Codex 加载插件中的技能，通过终端将 Python 代码传给 `browser-use` 的标准输入。插件没有附加 MCP 服务，也不会自动安装、升级或重启 Browser Use。
+
+插件使用独立标识 `browser-use-opensource`，避免与 Codex 对旧版 `browser-use` 本地插件的自动迁移规则冲突。
 
 包含 Windows PowerShell 调用说明，以及共享 daemon 和终端沙箱连接限制的处理规则。
 
@@ -22,7 +24,7 @@ Codex 加载插件中的技能，通过终端将 Python 代码传给 `browser-us
 
 ```text
 codex plugin marketplace add HadesScience/browser-use-codex-plugin
-codex plugin add browser-use@browser-use-codex
+codex plugin add browser-use-opensource@browser-use-codex
 codex plugin list --marketplace browser-use-codex --json
 ```
 
@@ -33,7 +35,7 @@ codex plugin list --marketplace browser-use-codex --json
 ```text
 git clone https://github.com/HadesScience/browser-use-codex-plugin.git
 codex plugin marketplace add ./browser-use-codex-plugin
-codex plugin add browser-use@browser-use-codex
+codex plugin add browser-use-opensource@browser-use-codex
 ```
 
 ## 验证连接

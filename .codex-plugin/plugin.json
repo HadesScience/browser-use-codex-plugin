@@ -1,0 +1,17 @@
+{
+  "name": "browser-use",
+  "version": "1.0.0",
+  "description": "Control local Chrome using the existing browser-use CLI and skill.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Browser Use",
+    "shortDescription": "通过现有 CLI 控制本机 Chrome",
+    "longDescription": "复用现有 browser-use 安装，以 PowerShell stdin 调用 CLI，保留 Chrome 登录态。",
+    "category": "Productivity"
+  },
+  "author": {
+    "name": "HadesScience"
+  },
+  "repository": "https://github.com/HadesScience/browser-use-codex-plugin",
+  "license": "MIT"
+}
